@@ -43,7 +43,7 @@ func HandleRegister(bot *tgbotapi.BotAPI, update tgbotapi.Update, input string, 
 		return
 	}
 
-	response = resp.Msg + ", vui lòng login bằng cú pháp /login_mssv_password để sử dụng dịch vụ."
+	response = resp.Msg + ", vui lòng login bằng cú pháp /login + [mssv] + [password] để sử dụng dịch vụ."
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, response)
 	bot.Send(msg)
 }
@@ -57,7 +57,8 @@ func HandleOTP(bot *tgbotapi.BotAPI, update tgbotapi.Update, mssv string, cfg *c
 		if err == nil {
 			response = "OTP đã được gửi về email của bạn, vui kiểm tra email."
 		} else {
-			response = "Có lỗi trong việc lấy OTP, vui lòng thử lại sau: " + err.Error() + "\n"
+			response = "Có lỗi trong việc lấy OTP, vui lòng thử lại sau"
+			fmt.Println(err.Error())
 			// response = err.Error()
 		}
 	}

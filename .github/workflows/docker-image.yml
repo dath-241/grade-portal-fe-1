@@ -6,7 +6,7 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest  # Sử dụng máy ảo GitHub Actions
+    runs-on: ubuntu-latest # Sử dụng máy ảo GitHub Actions
     steps:
       # Kiểm tra và cài đặt Docker (nếu chưa có)
       - name: Set up Docker
@@ -27,7 +27,7 @@ jobs:
 
       # Build và Push Docker Image
       - name: Build and Push Docker Image
-        env:  # Truyền các secrets từ repository
+        env: # Truyền các secrets từ repository
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_ACCESS_TOKEN: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
         run: |
@@ -36,7 +36,7 @@ jobs:
           docker push $DOCKERHUB_USERNAME/grade-portal-tele
   deploy:
     needs: docker
-    runs-on: ubuntu-latest  # Sử dụng máy ảo GitHub Actions
+    runs-on: ubuntu-latest # Sử dụng máy ảo GitHub Actions
     steps:
       # Kiểm tra và cài đặt Docker (nếu chưa có)
       - name: Set up Docker
